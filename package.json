@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:ci": "ng build --base-href /bionic-reading-converter/"
   },
   "private": true,
   "dependencies": {
