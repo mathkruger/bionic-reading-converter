@@ -2,3 +2,7 @@
 .width-full {
     width: 100% !important;
 }
+
+strong {
+    color: unset !important;
+}
