@@ -5,41 +5,42 @@
 </nav>
 
 <main class="container mt-4 px-4">
-  <div class="columns">
-    <section class="column is-half is-full-mobile mb-4">
+  <section class="mb-4">
+    <div class="panel is-info">
+      <div class="panel-heading">
+        Convert
+      </div>
+
+      <div class="panel-block">
+        <form class="width-full" (ngSubmit)="onSubmit()" [formGroup]="form">
+          <div class="field">
+            <label class="label">Text</label>
+            <div class="control">
+              <textarea class="textarea" name="text" id="text" formControlName="text" cols="30"
+                rows="5">This is just a text my friend</textarea>
+            </div>
+          </div>
+  
+          <button class="button is-success width-full" type="submit" [disabled]="!form.valid">Convert</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <ng-container *ngIf="results.length > 0">
+    <section>
       <div class="panel is-info">
         <div class="panel-heading">
-          Convert
+          <div class="is-flex is-align-items-center is-justify-content-space-between">
+            <span>Result</span>
+            <button class="button is-warning" (click)="export('result-text')">Save</button>
+          </div>
         </div>
 
-        <div class="panel-block">
-          <form class="width-full" (ngSubmit)="onSubmit()" [formGroup]="form">
-            <div class="field">
-              <label class="label">Text</label>
-              <div class="control">
-                <textarea class="textarea" name="text" id="text" formControlName="text" cols="30"
-                  rows="10">This is just a text my friend</textarea>
-              </div>
-            </div>
-    
-            <button class="button is-success width-full" type="submit" [disabled]="!form.valid">Convert</button>
-          </form>
+        <div id="result-text" class="panel-block">
+          <p [innerHTML]="results"></p>
         </div>
       </div>
     </section>
-
-    <ng-container *ngIf="results.length > 0">
-      <section class="column is-half is-full-mobile">
-        <div class="panel is-info">
-          <div class="panel-heading">
-            Result
-          </div>
-
-          <div class="panel-block">
-            <p [innerHTML]="results"></p>
-          </div>
-        </div>
-      </section>
-    </ng-container>
-  </div>
+  </ng-container>
 </main>
